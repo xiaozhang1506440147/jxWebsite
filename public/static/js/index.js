@@ -85,3 +85,20 @@ $(document).ready(function(){
     }, 3000);
     });
 });
+Function.prototype.getMultiLine = function () {
+    var lines = new String(this);
+    lines = lines.substring(lines.indexOf("/*") + 3, lines.lastIndexOf("*/"));
+    return lines;
+}
+
+var string = function () {
+/*
+Deloveped by ——
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+　肖璋 & 杨佳 & 张卓文　　　　　　　　
+                                                                                           
+                                                                              
+*/
+}
+window.console.log(string.getMultiLine());
