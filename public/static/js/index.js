@@ -69,3 +69,19 @@ $(document).ready(function(){
     }, 3000);
     });
 });
+$(document).ready(function(){
+    $(".media-info-image-3").hover(function(){
+        $('.media-info-image-3').addClass('animated pulse');
+    setTimeout(function(){
+        $('.media-info-image-3').removeClass('pulse');
+    }, 3000);
+    });
+});
+$(document).ready(function(){
+    $(".logofoot img").hover(function(){
+        $('.logofoot img').addClass('animated flipInY');
+    setTimeout(function(){
+        $('.logofoot img').removeClass('flipInY');
+    }, 3000);
+    });
+});
