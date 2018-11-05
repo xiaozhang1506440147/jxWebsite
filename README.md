@@ -15,10 +15,13 @@
 1. MySQL
 - 工具：
 1. Git, Xshell, WinScp, Photoshop, Vscode, Navicat, Postman 等。
+- 架构：
+1. MVC架构 + RESTful api，前后端分离
 ## 项目功能：
 ###### 计信网站，CMS系统
 ## 使用方法：
-###### 系统需运行于Nginx + PHP +MySQL环境下，url+admin可登录后台管理模块，账号密码均为123
+###### 系统需运行于Nginx + PHP +MySQL环境下，
+###### 线上地址：http://120.79.55.213 url+admin可登录后台管理模块，账号密码均为123
 ## 致谢：
 ###### 小组全体成员以及孙林老师
 
