@@ -45,3 +45,27 @@ $(function(){
 function displayResult(){
     $('#display').addClass('bottom-span-2');
 };
+$(document).ready(function(){
+    $("#logo-ani").hover(function(){
+        $('#logo-ani').addClass('animated flip');
+    setTimeout(function(){
+        $('#logo-ani').removeClass('flip');
+    }, 3000);
+    });
+});
+$(document).ready(function(){
+    $(".media-info-image-1").hover(function(){
+        $('.media-info-image-1').addClass('animated pulse');
+    setTimeout(function(){
+        $('.media-info-image-1').removeClass('pulse');
+    }, 3000);
+    });
+});
+$(document).ready(function(){
+    $(".media-info-image-2").hover(function(){
+        $('.media-info-image-2').addClass('animated pulse');
+    setTimeout(function(){
+        $('.media-info-image-2').removeClass('pulse');
+    }, 3000);
+    });
+});
