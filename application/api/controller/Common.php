@@ -27,7 +27,13 @@ class Common extends Controller{
             ),
         'notice'=>array(),
     );
-    
+    protected function _initialize(){
+        parent::_initialize();
+        $this->request = Request::instance();
+        // $this->check_time($this->request->only(['time']));
+        // $this->check_token($this->request->param());
+        $this->params = $this->check_params($this->request->except(['time','token']));
+    }
     /**
      * 验证请求是否超时
      * @param [array] $arr [包含时间戳的参数数组]
