@@ -26,3 +26,19 @@ $(function(){
         }
      });
 });
+$(function(){
+    var content_arr=[];
+    $('.media p').each(function(){//遍历media p内容
+        var content=$(this).text();//去掉前后文空格
+        content_arr.push(content);//内容放进数组
+    })
+    for(var i=0;i<content_arr.length;i++){//遍历循环数组
+        if(content_arr[i].length>=190){//如果数组长度（也就是文本长度）大于等于190
+            content=content_arr[i].substr(0,185)+'...';//添加省略号并放进media p文字内容后面
+            $(".media p").eq(i).text(content);
+        }else{
+            content=content_arr[i];
+            $(".media p").eq(i).text(content);
+        }
+    }
+})
