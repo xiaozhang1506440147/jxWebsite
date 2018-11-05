@@ -329,3 +329,65 @@
     <script src="./static/js/jquery-3.2.1.min.js"></script>
     <script src="./static/js/bootstrap.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script>
+        $(function () { $("[data-toggle='tooltip']").tooltip(); });
+        if ($('#back-to-top').length) {
+            var scrollTrigger = 10; // px
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > scrollTrigger) {
+                    $('#back-to-top').addClass('show');
+                } else {
+                    $('#back-to-top').removeClass('show');
+                }
+            });
+            $('#back-to-top').on('click', function (e) {
+                $('html,body').animate({
+                    scrollTop: 0
+                }, 700);
+                return false;
+            });
+        }
+        $(function(){
+            $.ajax({
+            async:true,
+            type:"POST",
+            url:'http://www.tp5.com/index.php/api/notice/show',
+            headers: {'token': '9e21ba80c09a46313e0a42bd32255efe'},
+            dataType:'json',
+            success:function(result){
+                var dataObj = result,con="";
+                $.each($.parseJSON(dataObj), function(index, item){
+                    $.each(item,function(a,b){
+                        var t=item.time;
+                        timestampToTime(t)
+                        function timestampToTime(timestamp) {
+                            var date = new Date(timestamp * 1000); 
+                            M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+                            D = change(date.getDate()) + ' ';
+                            h = change(date.getHours()) + ':';
+                            m = change(date.getMinutes()) ;
+                            return  M + D + h + m;
+                        }
+                        function change(t) {
+                            if (t < 10) {
+                                return "0" + t;
+                            } else {
+                                return t;
+                            }
+                        }
+                        if(index==0 | index==1){
+                        $(".append-notice").append(
+                                "<div class='subtitle'><div class='notice-content'><span class='glyphicon glyphicon-chevron-right dec' ></span><a data-toggle='modal' data-target='#"+ item.id +"' style='cursor:pointer;'>"+ item.title +"</a></div></div><img src='./static/images/new.gif' style='margin:-15px 10px 0 0;float: right;'><div class='modal fade' id='"+ item.id +"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button><h4 class='modal-title' id='myModalLabel'>"+ item.title +"</h4></div><div class='modal-body'>"+ item.content +"<br><div style='float:right'>发布时间："+ timestampToTime(t) +"</div></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>关闭</button></div></div></div></div>");
+                        }else{
+                        $(".append-notice").append(
+                                "<div class='subtitle'><div class='notice-content'><span class='glyphicon glyphicon-chevron-right dec' ></span><a  data-toggle='modal' data-target='#"+ item.id +"' style='cursor:pointer;'>"+ item.title +"</a></div></div><div class='modal fade' id='"+ item.id +"' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'><div class='modal-dialog'><div class='modal-content'><div class='modal-header'><button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button><h4 class='modal-title' id='myModalLabel'>"+ item.title +"</h4></div><div class='modal-body'>"+ item.content + "<br><div style='float:right'>发布时间："+ timestampToTime(t) + "</div></div><div class='modal-footer'><button type='button' class='btn btn-default' data-dismiss='modal'>关闭</button></div></div></div></div>");
+                        }
+                        return false;
+                    })
+                });
+                }
+            });
+        })
+    </script>
+</body>
+</html>
