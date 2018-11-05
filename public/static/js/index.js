@@ -42,3 +42,6 @@ $(function(){
         }
     }
 })
+function displayResult(){
+    $('#display').addClass('bottom-span-2');
+};
