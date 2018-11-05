@@ -1,21 +1,17 @@
 <?php
-// +----------------------------------------------------------------------
-// | ThinkPHP [ WE CAN DO IT JUST THINK ]
-// +----------------------------------------------------------------------
-// | Copyright (c) 2006~2016 http://thinkphp.cn All rights reserved.
-// +----------------------------------------------------------------------
-// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
-// +----------------------------------------------------------------------
-// | Author: liu21st <liu21st@gmail.com>
-// +----------------------------------------------------------------------
+use think\Route;
 
-return [
-    '__pattern__' => [
-        'name' => '\w+',
-    ],
-    '[hello]'     => [
-        ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
-        ':name' => ['index/hello', ['method' => 'post']],
-    ],
+//api.tp5.com ==> www.tp5.com/index.php/api
+Route::domain('api','api');
+//api.tp5.com/user ==> www.tp5.com/index.php/api/user/login
+Route::post('user','user/login');
+//notice
+Route::post('notice','notice/index');
 
-];
+Route::post('add','notice/add_notice');
+
+Route::post('delete','notice/delete');
+
+Route::post('show','notice/show');
+
+Route::post('update','notice/update');
